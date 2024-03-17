@@ -1,23 +1,39 @@
 import classes from "./Checkbox.module.css";
+import { TaskState, taskStatus } from "../../store/TaskSlice";
+
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 type CheckboxProps = {
   id: string;
   title: string;
+  onCheckStatus: (status: taskStatus) => void;
+  statusType: taskStatus;
 };
 
-const Checkbox = ({ id, title }: CheckboxProps) => {
+const Checkbox = ({ id, title, onCheckStatus, statusType }: CheckboxProps) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const status = useSelector((state: any) => state.task.statusFilter);
+
+  useEffect(() => {
+    status.includes(statusType) ? setIsChecked(true) : setIsChecked(false);
+  }, [status]);
+
+  const clickHandler = () => {
+    onCheckStatus(statusType);
+  };
+
   return (
-    <>
-      <div className={classes.cb}>
-        <div className={classes.cb_wrapper}>
-          <input type="checkbox" className={classes._checkbox} id={id} />
-          <label htmlFor={id} className={classes.label}>
-            <div id="tick_mark" className={classes.tick_mark}></div>
-          </label>
-        </div>
-        <label htmlFor={id}>{title}</label>
+    <div className={classes.cb}>
+      <div className={classes.cb_wrapper} onClick={clickHandler}>
+        <input type="checkbox" className={classes._checkbox} id={id} checked={isChecked} />
+        <label htmlFor={id} className={classes.label}>
+          <div id="tick_mark" className={classes.tick_mark}></div>
+        </label>
       </div>
-    </>
+      <label onClick={clickHandler}>{title}</label>
+    </div>
   );
 };
 
