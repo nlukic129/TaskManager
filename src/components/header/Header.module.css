@@ -1,12 +1,9 @@
-@font-face {
-  font-family: "Roboto Bold";
-  src: url("../../assets/fonts/Roboto-Bold.ttf") format("truetype");
-}
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
 .header {
   margin: auto;
   width: 90%;
-  font-family: "Roboto Bold";
+  font-family: "Poppins";
   color: #cccccc;
   display: flex;
   justify-content: space-between;

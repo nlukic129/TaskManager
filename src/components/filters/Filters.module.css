@@ -1,0 +1,10 @@
+.filters {
+  display: flex;
+  width: 50%;
+  margin: 20px auto;
+}
+
+.checkboxes {
+  display: flex;
+  justify-content: space-between;
+}

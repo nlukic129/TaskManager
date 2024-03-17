@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
+::selection {
+  color: #fff;
+  background: #664aff;
+}
+
+.search_box {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.search_box.active {
+  width: 250px;
+}
+
+.search_box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 50px;
+  background: #fff;
+  outline: none;
+  padding-left: 16px;
+  padding-right: 0px;
+  font-size: 18px;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.search_box input.active {
+  opacity: 1;
+}
+
+.search_box input::placeholder {
+  color: #a6a6a6;
+}
+
+.search_box .search_icon {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 40px;
+  width: 40px;
+  background: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 41px;
+  font-size: 22px;
+  color: #664aff;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.search_box .search_icon.active {
+  right: -10px;
+  height: 35px;
+  line-height: 36px;
+  width: 35px;
+  font-size: 15px;
+  background: #664aff;
+  color: #fff;
+  transform: translateY(-50%) rotate(360deg);
+}
+
+.search_box .cancel_icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.5s 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.search_box .cancel_icon.active {
+  right: -40px;
+  transform: translateY(-50%) rotate(360deg);
+}
+
+.search_box .search_data {
+  text-align: center;
+  padding-top: 7px;
+  color: #fff;
+  font-size: 18px;
+  word-wrap: break-word;
+}
+
+.search_box .search_data.active {
+  display: none;
+}
