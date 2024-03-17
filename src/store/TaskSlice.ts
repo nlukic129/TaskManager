@@ -21,7 +21,7 @@ export interface TaskState {
 
 const initialState: TaskState = {
   tasks: [],
-  statusFilter: [taskStatus.DONE, taskStatus.PROGRESS],
+  statusFilter: [taskStatus.PROGRESS, taskStatus.DONE],
   searchPerson: "",
 };
 
@@ -49,8 +49,11 @@ const taskSlice = createSlice({
       });
       state.statusFilter = [...statusFilter];
     },
+    setSearchFilter: (state, action) => {
+      state.searchPerson = action.payload;
+    },
   },
 });
 
-export const { setStatusFilter } = taskSlice.actions;
+export const { setStatusFilter, setSearchFilter } = taskSlice.actions;
 export default taskSlice.reducer;
