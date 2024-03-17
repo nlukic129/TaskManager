@@ -1,0 +1,91 @@
+.wrapper {
+  width: 90%;
+  height: 130px;
+  border-radius: 30px;
+  overflow: hidden;
+  margin: 10px auto;
+  color: #6a6bce;
+}
+
+.wrapper:hover > * {
+  background-color: #6a6bce;
+  color: #e1e2ff;
+}
+
+.wrapper:hover {
+  overflow: none;
+  scale: 1.05;
+}
+
+.main {
+  height: 85px;
+  background: #e1e2ff;
+  margin-bottom: 5px;
+  cursor: grab;
+  justify-content: start;
+  display: flex;
+  width: 100%;
+}
+
+.details {
+  height: 40px;
+  background: #e1e2ff;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.statusColorInProgress {
+  background-color: #5c90ff;
+  width: 5%;
+  height: 100%;
+}
+
+.statusColorDone {
+  background-color: #6bff85;
+  width: 5%;
+  height: 100%;
+}
+
+@font-face {
+  font-family: PoppinsBold;
+  src: url("../../assets/fonts/Poppins-Bold.ttf");
+}
+@font-face {
+  font-family: PoppinsLightItalic;
+  src: url("../../assets/fonts/Poppins-LightItalic.ttf");
+}
+
+.details {
+  text-align: center;
+  padding: 7px;
+  font-family: PoppinsLightItalic;
+}
+.data {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.data h3 {
+  margin: 0;
+  font-family: PoppinsBold;
+}
+
+.description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+  font-size: 15px;
+}
+
+.responsiblePerson {
+}
+
+.responsiblePerson p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+  font-size: 15px;
+}

@@ -4,7 +4,19 @@
 }
 
 body {
-  background-color: #eeeeee;
   font-family: "Roboto", sans-serif;
   margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6a6bce; /* Boja thumb-a */
+  border-radius: 4px; /* Radijus thumb-a */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Boja pozadine track-a */
 }
