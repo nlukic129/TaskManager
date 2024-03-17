@@ -1,0 +1,9 @@
+.tasks_wrapper {
+  width: 73%;
+  background-color: #f7fff7;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 30px;
+  height: 75vh;
+  box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
+}
