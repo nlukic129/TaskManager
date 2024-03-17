@@ -15,7 +15,7 @@ const Checkbox = ({ id, title }: CheckboxProps) => {
             <div id="tick_mark" className={classes.tick_mark}></div>
           </label>
         </div>
-        <p>{title}</p>
+        <label htmlFor={id}>{title}</label>
       </div>
     </>
   );

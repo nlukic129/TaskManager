@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
 ::selection {
-  color: #fff;
-  background: #664aff;
+  color: #f7fff7;
+  background: #6a6bce;
 }
 
 .search_box {
   position: relative;
+  margin: auto;
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -52,7 +53,7 @@
   text-align: center;
   line-height: 41px;
   font-size: 22px;
-  color: #664aff;
+  color: #6a6bce;
   cursor: pointer;
   z-index: 1;
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -64,7 +65,7 @@
   line-height: 36px;
   width: 35px;
   font-size: 15px;
-  background: #664aff;
+  background: #6a6bce;
   color: #fff;
   transform: translateY(-50%) rotate(360deg);
 }

@@ -7,6 +7,11 @@
   align-items: center;
 }
 
+.cb label {
+  cursor: pointer;
+  color: #f7fff7;
+}
+
 .cb p {
   margin-left: 3px;
 }
@@ -25,7 +30,7 @@
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  background-color: #664aff;
+  background-color: #ffffff;
   transform: translateY(-50%);
   border-radius: 15px;
   cursor: pointer;
@@ -43,7 +48,7 @@
   width: 20px;
   height: 20px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #6a6bce;
   transform: translateY(-50%);
   border-radius: 10px;
   transition: 0.2s ease width, 0.2s ease height;
@@ -69,7 +74,7 @@
 .tick_mark:after {
   content: "";
   position: absolute;
-  background-color: #fff;
+  background-color: #6a6bce;
   border-radius: 2px;
   opacity: 0;
   transition: 0.2s ease transform, 0.2s ease opacity;
@@ -94,7 +99,7 @@
 }
 
 ._checkbox:checked + .label {
-  background-color: #664aff;
+  background-color: #f7fff7;
 }
 
 ._checkbox:checked + .label:before {

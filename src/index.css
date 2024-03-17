@@ -1,4 +1,10 @@
+@font-face {
+  font-family: PoppinsLight;
+  src: url("./assets/fonts/Poppins-Light.ttf");
+}
+
 body {
-  background-color: #191a1a;
+  background-color: #f7fff7;
   font-family: "Roboto", sans-serif;
+  margin: 0;
 }

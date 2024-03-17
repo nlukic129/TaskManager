@@ -6,11 +6,15 @@ const Filters = () => {
   return (
     <>
       <div className={classes.filters}>
+        <Search />
+        <hr />
         <div className={classes.checkboxes}>
+          <h1>
+            <span>Filter by Status</span>
+          </h1>
           <Checkbox id="in_progress" title="In Progress" />
           <Checkbox id="done" title="Done" />
         </div>
-        <Search />
       </div>
     </>
   );

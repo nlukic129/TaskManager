@@ -4,15 +4,15 @@
   margin: auto;
   width: 90%;
   font-family: "Poppins";
-  color: #cccccc;
+  color: #f7fff7;
   display: flex;
   justify-content: space-between;
 }
 
-.header h1 {
-  font-size: 38px;
+.header_wrapper {
+  background-color: #4d4f9e;
 }
 
-.hr {
-  width: 95%;
+.header h1 {
+  font-size: 38px;
 }
