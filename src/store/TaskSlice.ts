@@ -32,12 +32,22 @@ const taskSlice = createSlice({
     setStatusFilter: (state, action) => {
       const status = action.payload;
       const statusIndex = state.statusFilter.indexOf(status);
+      const statusFilter = state.statusFilter;
       if (statusIndex !== -1) {
-        state.statusFilter.splice(statusIndex, 1);
+        statusFilter.splice(statusIndex, 1);
       } else {
-        state.statusFilter.push(status);
+        statusFilter.push(status);
       }
-      console.log([...state.statusFilter]);
+      statusFilter.sort((a, b) => {
+        if (a === "progress" && b === "done") {
+          return -1;
+        } else if (a === "done" && b === "progress") {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+      state.statusFilter = [...statusFilter];
     },
   },
 });
