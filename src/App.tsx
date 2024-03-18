@@ -6,20 +6,17 @@ import Login from "./components/login/Login";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import Registration from "./components/registration/Registration";
 
 function App() {
-  const [isAuth, setIsAuth] = useState(true);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
   const [isLogin, setIsLogin] = useState(true);
-
-  const switchToSignUpHandler = () => {
-    setIsLogin(false);
-  };
 
   return (
     <>
       <Header />
       <AnimatePresence mode="wait">
-        {isAuth ? (
+        {!isUserLoggedIn ? (
           isLogin ? (
             <motion.div
               key="login"
@@ -29,7 +26,11 @@ function App() {
               exit={{ opacity: 0, x: -200 }}
               style={{ marginTop: 20, display: "flex", justifyContent: "center" }}
             >
-              <Login onSwitchToSignUp={switchToSignUpHandler} />
+              <Login
+                onSwitchToSignUp={() => {
+                  setIsLogin(false);
+                }}
+              />
             </motion.div>
           ) : (
             <motion.div
@@ -40,7 +41,11 @@ function App() {
               exit={{ opacity: 0, x: -200 }}
               style={{ marginTop: 20, display: "flex", justifyContent: "center" }}
             >
-              <Login onSwitchToSignUp={switchToSignUpHandler} />
+              <Registration
+                onSwitchToLogin={() => {
+                  setIsLogin(true);
+                }}
+              />
             </motion.div>
           )
         ) : (
