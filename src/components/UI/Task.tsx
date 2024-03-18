@@ -21,7 +21,7 @@ const Task = ({ title, description, responsiblePerson, status, onOpenDetails, id
     <>
       <div className={classes.wrapper}>
         <div className={classes.main}>
-          <div className={statusClasses[status]}></div>
+          <div className={statusClasses[status]} />
           <div className={classes.data}>
             <div>
               <h3>{title}</h3>

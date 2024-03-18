@@ -71,6 +71,7 @@
   font-family: PoppinsBold;
   overflow: hidden;
   max-width: 300px;
+  text-wrap: nowrap;
   text-overflow: ellipsis;
 }
 
@@ -80,6 +81,7 @@
   font-size: 14px;
   overflow: hidden;
   max-width: 300px;
+  text-wrap: nowrap;
   text-overflow: ellipsis;
 }
 
