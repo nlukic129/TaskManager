@@ -5,7 +5,7 @@ export enum taskStatus {
   PROGRESS = "progress",
 }
 
-interface Task {
+export interface ITask {
   id: number;
   title: string;
   description: string;
@@ -14,7 +14,7 @@ interface Task {
 }
 
 export interface TaskState {
-  tasks: Task[];
+  tasks: ITask[];
   statusFilter: taskStatus[];
   searchPerson: string;
 }

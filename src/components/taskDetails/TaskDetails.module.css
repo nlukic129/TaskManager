@@ -1,0 +1,30 @@
+.wrapper {
+  width: 90%;
+  border-radius: 30px;
+  overflow: hidden;
+  margin: 10px auto;
+  color: #6a6bce;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: PoppinsLight;
+  color: white;
+}
+
+.wrapper h1 {
+  margin: 0 0 10px 0;
+}
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.responsible_person {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.description {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
