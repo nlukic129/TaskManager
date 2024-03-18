@@ -1,4 +1,4 @@
-import Button from "../UI/Button";
+import Button, { ButtonType } from "../UI/Button";
 import InputText from "../UI/InputText";
 import classes from "./Login.module.css";
 
@@ -16,7 +16,7 @@ const Login = ({ onSwitchToSignUp }: LoginProps) => {
       <h1>Login</h1>
       <InputText label="Email" type="text" />
       <InputText label="Password" type="password" />
-      <Button label="Log In Now" />
+      <Button label="Log In Now" buttonType={ButtonType.LIGHT_MODE} />
       <div className={classes.sign_up_wrapper}>
         <p className={classes.sign_up_message}>Or Sign Up Using</p>
         <p className={classes.sign_up} onClick={signUpHandler}>

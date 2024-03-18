@@ -1,14 +1,20 @@
 import classes from "./Button.module.css";
 
-interface ButtonProps {
-  label: string;
+export enum ButtonType {
+  DARK_MODE = "darkMode",
+  LIGHT_MODE = "lightMode",
 }
 
-const Button = ({ label }: ButtonProps) => {
+interface ButtonProps {
+  label: string;
+  buttonType: ButtonType;
+}
+
+const Button = ({ label, buttonType }: ButtonProps) => {
   return (
     <div className={classes.block_wrapper}>
-      <div id="defnic" className={classes.gps_button_wrapper}>
-        <button className={classes.gps_button}>{label}</button>
+      <div className={classes.gps_button_wrapper}>
+        <button className={buttonType === ButtonType.DARK_MODE ? classes.gps_button : classes.gps_button_light}>{label}</button>
       </div>
     </div>
   );

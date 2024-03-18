@@ -4,6 +4,8 @@ import Checkbox from "../UI/Checkbox";
 import { taskStatus } from "../../store/TaskSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setStatusFilter } from "../../store/TaskSlice";
+import Button from "../UI/Button";
+import { ButtonType } from "../UI/Button";
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -22,6 +24,9 @@ const Filters = () => {
         </h1>
         <Checkbox id="in_progress" title="In Progress" onCheckStatus={onCheckHandler} statusType={taskStatus.PROGRESS} />
         <Checkbox id="done" title="Done" onCheckStatus={onCheckHandler} statusType={taskStatus.DONE} />
+      </div>
+      <div className={classes.new_task}>
+        <Button label="New Task" buttonType={ButtonType.LIGHT_MODE} />
       </div>
     </div>
   );

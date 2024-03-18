@@ -1,4 +1,4 @@
-import Button from "../UI/Button";
+import Button, { ButtonType } from "../UI/Button";
 import InputText from "../UI/InputText";
 import classes from "./Registration.module.css";
 
@@ -18,7 +18,7 @@ const Registration = ({ onSwitchToLogin }: RegistrationProps) => {
       <InputText label="Email" type="text" />
       <InputText label="Password" type="password" />
       <InputText label="Confirm Password" type="password" />
-      <Button label="Sign Up" />
+      <Button label="Sign Up" buttonType={ButtonType.LIGHT_MODE} />
       <div className={classes.login_wrapper}>
         <p className={classes.login_message}>Already have an account?</p>
         <p className={classes.login} onClick={LoginHandler}>
