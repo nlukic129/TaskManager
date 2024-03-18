@@ -8,13 +8,21 @@ export enum ButtonType {
 interface ButtonProps {
   label: string;
   buttonType: ButtonType;
+  onClickButton: () => void;
 }
 
-const Button = ({ label, buttonType }: ButtonProps) => {
+const Button = ({ label, buttonType, onClickButton }: ButtonProps) => {
   return (
     <div className={classes.block_wrapper}>
       <div className={classes.gps_button_wrapper}>
-        <button className={buttonType === ButtonType.DARK_MODE ? classes.gps_button : classes.gps_button_light}>{label}</button>
+        <button
+          className={buttonType === ButtonType.DARK_MODE ? classes.gps_button : classes.gps_button_light}
+          onClick={() => {
+            onClickButton();
+          }}
+        >
+          {label}
+        </button>
       </div>
     </div>
   );

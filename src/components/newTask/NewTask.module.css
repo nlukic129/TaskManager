@@ -1,0 +1,16 @@
+.wrapper h1 {
+  font-family: PoppinsLight;
+  color: #f7fff7;
+  font-size: 25px;
+  margin-bottom: 0;
+  text-align: center;
+}
+.input_wrapper {
+  width: 60%;
+  margin: auto;
+}
+
+.button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

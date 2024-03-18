@@ -11,6 +11,10 @@ const Registration = ({ onSwitchToLogin }: RegistrationProps) => {
     onSwitchToLogin();
   };
 
+  const signUpUserHandler = () => {
+    console.log("Sign up user");
+  };
+
   return (
     <div className={classes.wrapper}>
       <h1>Registration</h1>
@@ -18,7 +22,7 @@ const Registration = ({ onSwitchToLogin }: RegistrationProps) => {
       <InputText label="Email" type="text" />
       <InputText label="Password" type="password" />
       <InputText label="Confirm Password" type="password" />
-      <Button label="Sign Up" buttonType={ButtonType.LIGHT_MODE} />
+      <Button label="Sign Up" buttonType={ButtonType.LIGHT_MODE} onClickButton={signUpUserHandler} />
       <div className={classes.login_wrapper}>
         <p className={classes.login_message}>Already have an account?</p>
         <p className={classes.login} onClick={LoginHandler}>

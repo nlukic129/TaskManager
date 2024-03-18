@@ -1,0 +1,29 @@
+.text_area:focus {
+  outline: none;
+  border-color: black;
+}
+
+.text_area,
+.text_area::after {
+  grid-area: 1 / 1 / 2 / 2;
+
+  /* Custom styling goes here */
+  font: inherit;
+  font-size: 14px;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #c0c0c0;
+}
+
+.text_area {
+  resize: vertical;
+  overflow: hidden;
+  width: 100%;
+  font-family: PoppinsLight;
+}
+
+.text_area::after {
+  content: attr(data-replicated-value) " ";
+  white-space: pre-wrap;
+  visibility: hidden;
+}
