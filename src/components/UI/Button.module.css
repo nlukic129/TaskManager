@@ -1,0 +1,62 @@
+.gps_button_wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.gps_button_wrapper button.gps_button {
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid #4d4f9e;
+  border-radius: 100px;
+  color: #4d4f9e;
+  display: inline-block;
+  font: normal normal 18px / 18px "Palanquin Dark", Helvetica, Arial, Verdana, sans-serif;
+  overflow: hidden;
+  padding: 8px 25px 10px;
+  position: relative;
+  text-decoration: none;
+  transition: all 0.75s ease-in-out;
+  z-index: 1;
+  cursor: pointer;
+}
+.gps_button_wrapper button.gps_button:hover,
+.gps_button_wrapper button.gps_button:focus {
+  color: #fff;
+  transition: all 0.75s ease-in-out;
+}
+
+.gps_button_wrapper button.gps_button::before {
+  background: linear-gradient(#4d4f9e, #4d4f9e) -100px 0 no-repeat;
+  content: "";
+  display: inline-block;
+
+  height: 10em;
+  width: 200%;
+
+  opacity: 0;
+
+  position: absolute;
+  top: 0;
+  left: -30%;
+
+  -webkit-transform: skewX(-16deg) translateX(-80%);
+  -ms-transform: skewX(-16deg) translateX(-80%);
+  transform: skewX(-16deg) translateX(-80%);
+
+  transition: opacity 0.75s ease-in-out, -webkit-transform 0s 0.85s;
+  transition: opacity 0.75s ease-in-out, -ms-transform 0s 0.85s;
+  transition: opacity 0.75s ease-in-out, transform 0s 0.85s;
+
+  z-index: -1;
+}
+.gps_button_wrapper button.gps_button:hover::before,
+.gps_button_wrapper button.gps_button:focus::before {
+  opacity: 1;
+
+  -webkit-transform: skewX(-16deg) translateX(0);
+  -ms-transform: skewX(-16deg) translateX(0);
+  transform: skewX(-16deg) translateX(0);
+
+  transition: -webkit-transform 1s ease-in-out;
+  transition: -ms-transform 1s ease-in-out;
+  transition: transform 1s ease-in-out;
+}

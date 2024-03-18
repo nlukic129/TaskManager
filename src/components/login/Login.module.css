@@ -1,0 +1,34 @@
+.wrapper {
+  width: 20%;
+  background-color: #a7a9ff;
+  padding: 20px;
+  border-radius: 30px;
+  height: 40vh;
+  box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
+}
+
+.wrapper h1 {
+  font-family: PoppinsLight;
+  color: #ffffff;
+  font-size: 35px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.sign_up_message {
+  margin: 0;
+  font-family: PoppinsLight;
+  font-size: 12px;
+}
+
+.sign_up {
+  margin: 0;
+  font-family: PoppinsLight;
+  cursor: pointer;
+}
+
+.sign_up_wrapper {
+  text-align: center;
+  bottom: 0;
+  margin-top: 50px;
+}
