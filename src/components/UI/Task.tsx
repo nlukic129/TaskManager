@@ -21,9 +21,8 @@ const Task = ({ title, description, responsiblePerson, status }: TaskProps) => {
         <div className={statusClasses[status]}></div>
         <div className={classes.data}>
           <div>
-            <h3>
-              {title} - {responsiblePerson}
-            </h3>
+            <h3>{title}</h3>
+            <h2>{responsiblePerson}</h2>
             <p className={classes.description}>{description}</p>
           </div>
         </div>
