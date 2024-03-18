@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <div className={classes.header_wrapper}>
       <div className={classes.header}>
-        <h1>Tasks Manager</h1>
+        <h1>Task Manager</h1>
         <h1>{currentTime}</h1>
       </div>
     </div>

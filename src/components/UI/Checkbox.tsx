@@ -26,8 +26,8 @@ const Checkbox = ({ id, title, onCheckStatus, statusType }: CheckboxProps) => {
 
   return (
     <div className={classes.cb}>
-      <div className={classes.cb_wrapper} onClick={clickHandler}>
-        <input type="checkbox" className={classes._checkbox} id={id} checked={isChecked} />
+      <div className={classes.cb_wrapper}>
+        <input type="checkbox" className={classes._checkbox} id={id} checked={isChecked} onClick={clickHandler} />
         <label htmlFor={id} className={classes.label}>
           <div id="tick_mark" className={classes.tick_mark}></div>
         </label>
