@@ -1,12 +1,13 @@
 import classes from "./Tasks.module.css";
 import Task from "../UI/Task";
-import { ITask, taskStatus } from "../../store/TaskSlice";
+import { ITask, setTasks, taskStatus } from "../../store/TaskSlice";
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Modal from "../UI/Modal";
 import TaskDetails from "../taskDetails/TaskDetails";
 import { DragDropContext, Draggable, DraggableStateSnapshot, Droppable } from "@hello-pangea/dnd";
+import { fetchTasks, parseTasks } from "../../utils/tasks";
 
 const tasks1 = [
   {
@@ -156,23 +157,27 @@ const tasks2 = [
 const Tasks = () => {
   const statusFilter = useSelector((state: any) => state.task.statusFilter);
   const searchPerson = useSelector((state: any) => state.task.searchPerson);
-  const [inProgressTasks, setInProgressTasks] = useState<any[]>(tasks1);
-  const [doneTasks, setDoneTasks] = useState<any[]>(tasks2);
+  const doneTasks = useSelector((state: any) => state.task.doneTasks);
+  const inProgressTasks = useSelector((state: any) => state.task.inProgressTasks);
+  const [inProgressTasksFiltered, setInProgressTasksFiltered] = useState<ITask[]>(tasks1);
+  const [doneTasksFiltered, setDoneTasksFiltered] = useState<ITask[]>(tasks2);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [taskDetails, setTaskDetails] = useState<ITask | null>(null);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchTasks().then((tasks) => dispatch(setTasks(tasks)));
+  }, []);
 
   useEffect(() => {
     if (searchPerson.length === 0) {
-      setInProgressTasks([...tasks1]);
-      setDoneTasks([...tasks2]);
+      setInProgressTasksFiltered([...inProgressTasks]);
+      setDoneTasksFiltered([...doneTasks]);
       return;
     }
-    const filteredInProgressTasks = tasks1.filter((task) => task.responsiblePerson.toLowerCase().includes(searchPerson.toLowerCase()));
-    const filteredDoneTasks = tasks2.filter((task) => task.responsiblePerson.toLowerCase().includes(searchPerson.toLowerCase()));
-
-    setInProgressTasks([...filteredInProgressTasks]);
-    setDoneTasks([...filteredDoneTasks]);
-  }, [searchPerson]);
+    setInProgressTasksFiltered(tasks1.filter((task) => task.responsiblePerson.toLowerCase().includes(searchPerson.toLowerCase())));
+    setDoneTasksFiltered(tasks2.filter((task) => task.responsiblePerson.toLowerCase().includes(searchPerson.toLowerCase())));
+  }, [searchPerson, doneTasks, inProgressTasks]);
 
   const taskDetailsModal = (
     <Modal
@@ -193,7 +198,9 @@ const Tasks = () => {
       <div className={classes.tasks_wrapper}>
         <div className={classes.header}>
           {statusFilter.map((status: taskStatus) => (
-            <h1 key={status}>{status === taskStatus.DONE ? `Done(${doneTasks.length})` : `In Progress...(${inProgressTasks.length})`}</h1>
+            <h1 key={status}>
+              {status === taskStatus.DONE ? `Done(${doneTasksFiltered.length})` : `In Progress...(${inProgressTasksFiltered.length})`}
+            </h1>
           ))}
         </div>
         <hr />
@@ -206,7 +213,7 @@ const Tasks = () => {
                   <Droppable droppableId="InProgress" type="droppableItem">
                     {(provided: any) => (
                       <div ref={provided.innerRef} {...provided.droppableProps}>
-                        {inProgressTasks.map((task, index) => (
+                        {inProgressTasksFiltered.map((task, index) => (
                           <Draggable draggableId={task.id.toString()} key={task.id} index={task.id}>
                             {(provided: any, snapshot: DraggableStateSnapshot) => (
                               <div
@@ -245,7 +252,7 @@ const Tasks = () => {
                   <Droppable droppableId="Done" type="droppableItem">
                     {(provided: any) => (
                       <div ref={provided.innerRef} {...provided.droppableProps}>
-                        {doneTasks.map((task, index) => (
+                        {doneTasksFiltered.map((task, index) => (
                           <Draggable draggableId={task.id.toString()} key={task.id} index={task.id}>
                             {(provided: any, snapshot: DraggableStateSnapshot) => (
                               <div

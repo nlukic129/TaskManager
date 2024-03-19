@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { parseTasks } from "../utils/tasks";
 
 export enum taskStatus {
-  DONE = "done",
-  PROGRESS = "progress",
+  DONE = "DONE",
+  PROGRESS = "PROGRESS",
 }
 
 export interface ITask {
@@ -14,13 +15,15 @@ export interface ITask {
 }
 
 export interface TaskState {
-  tasks: ITask[];
+  doneTasks: ITask[];
+  inProgressTasks: ITask[];
   statusFilter: taskStatus[];
   searchPerson: string;
 }
 
 const initialState: TaskState = {
-  tasks: [],
+  doneTasks: [],
+  inProgressTasks: [],
   statusFilter: [taskStatus.PROGRESS, taskStatus.DONE],
   searchPerson: "",
 };
@@ -39,9 +42,9 @@ const taskSlice = createSlice({
         statusFilter.push(status);
       }
       statusFilter.sort((a, b) => {
-        if (a === "progress" && b === "done") {
+        if (a === taskStatus.PROGRESS && b === taskStatus.DONE) {
           return -1;
-        } else if (a === "done" && b === "progress") {
+        } else if (a === taskStatus.DONE && b === taskStatus.PROGRESS) {
           return 1;
         } else {
           return 0;
@@ -52,8 +55,15 @@ const taskSlice = createSlice({
     setSearchFilter: (state, action) => {
       state.searchPerson = action.payload;
     },
+    setTasks: (state, action) => {
+      const tasks = action.payload;
+      const [parsedDoneTasks, parsedInProgressTasks] = parseTasks(tasks);
+
+      state.doneTasks = parsedDoneTasks;
+      state.inProgressTasks = parsedInProgressTasks;
+    },
   },
 });
 
-export const { setStatusFilter, setSearchFilter } = taskSlice.actions;
+export const { setStatusFilter, setSearchFilter, setTasks } = taskSlice.actions;
 export default taskSlice.reducer;

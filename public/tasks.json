@@ -1,0 +1,142 @@
+[
+  {
+    "title": "Meeting with the Client",
+    "description": "Prepare presentation and allocate tasks for the team.",
+    "status": "PROGRESS",
+    "responsiblePerson": "John",
+    "id": 0
+  },
+  {
+    "title": "Development of New Feature",
+    "description": "Implement user interface for the new module.",
+    "status": "PROGRESS",
+    "responsiblePerson": "Jane",
+    "id": 1
+  },
+  {
+    "title": "Application Testing",
+    "description": "Check functionality correctness in various scenarios.",
+    "status": "PROGRESS",
+    "responsiblePerson": "John",
+    "id": 2
+  },
+  {
+    "title": "Presentation Preparation",
+    "description": "Prepare presentation slides and materials.",
+    "status": "PROGRESS",
+    "responsiblePerson": "Jane",
+    "id": 3
+  },
+  {
+    "title": "Server Infrastructure Maintenance",
+    "description": "Update security patches and performance optimization.",
+    "status": "PROGRESS",
+    "responsiblePerson": "John",
+    "id": 4
+  },
+  {
+    "title": "Reviewing Codebase",
+    "description": "Review the codebase and resolve open tasks.",
+    "status": "PROGRESS",
+    "responsiblePerson": "Jane",
+    "id": 5
+  },
+  {
+    "title": "Team Meeting",
+    "description": "Discuss new ideas and plan next steps.",
+    "status": "PROGRESS",
+    "responsiblePerson": "John",
+    "id": 6
+  },
+  {
+    "title": "Setting User Privileges",
+    "description": "Assign appropriate privileges to users.",
+    "status": "PROGRESS",
+    "responsiblePerson": "Jane",
+    "id": 7
+  },
+  {
+    "title": "Database Optimization",
+    "description": "Optimize queries and index tables.",
+    "status": "PROGRESS",
+    "responsiblePerson": "John",
+    "id": 8
+  },
+  {
+    "title": "Researching New Technologies",
+    "description": "Study the latest technological trends and tools.",
+    "status": "PROGRESS",
+    "responsiblePerson": "Jane",
+    "id": 9
+  },
+  {
+    "title": "Updating User Documentation",
+    "description": "Update and improve user documentation.",
+    "status": "PROGRESS",
+    "responsiblePerson": "John",
+    "id": 10
+  },
+  {
+    "title": "Security Testing",
+    "description": "Check application security through penetration testing.",
+    "status": "DONE",
+    "responsiblePerson": "Jane",
+    "id": 11
+  },
+  {
+    "title": "Implementing New Design",
+    "description": "Implement new user interface based on design specifications.",
+    "status": "DONE",
+    "responsiblePerson": "John",
+    "id": 12
+  },
+  {
+    "title": "Marketing Plan Development",
+    "description": "Plan marketing activities for the next quarter.",
+    "status": "DONE",
+    "responsiblePerson": "Jane",
+    "id": 13
+  },
+  {
+    "title": "Market Research",
+    "description": "Analyze competition and identify new opportunities.",
+    "status": "DONE",
+    "responsiblePerson": "John",
+    "id": 14
+  },
+  {
+    "title": "Product Presentation Preparation",
+    "description": "Prepare materials for product promotion at a conference.",
+    "status": "DONE",
+    "responsiblePerson": "Jane",
+    "id": 15
+  },
+  {
+    "title": "Customer Support System Maintenance",
+    "description": "Address customer requests and resolve issues.",
+    "status": "DONE",
+    "responsiblePerson": "John",
+    "id": 16
+  },
+  {
+    "title": "Corporate Training Planning",
+    "description": "Plan and organize training for employees.",
+    "status": "DONE",
+    "responsiblePerson": "Jane",
+    "id": 17
+  },
+  {
+    "title": "Updating Mobile Application",
+    "description": "Update and enhance mobile application functionality.",
+    "status": "DONE",
+    "responsiblePerson": "John",
+    "id": 18
+  },
+  {
+    "title": "Customer Data Analysis",
+    "description": "Analyze customer data to improve user experience.",
+    "status": "DONE",
+    "responsiblePerson": "Jane",
+    "id": 19
+  }
+]
