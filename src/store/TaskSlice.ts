@@ -15,21 +15,25 @@ export interface ITask {
 }
 
 export interface TaskState {
-  doneTasks: ITask[];
-  inProgressTasks: ITask[];
   statusFilter: taskStatus[];
   searchPerson: string;
+  tasks: {
+    [taskStatus.DONE]: ITask[];
+    [taskStatus.PROGRESS]: ITask[];
+  };
 }
 
 const initialState: TaskState = {
-  doneTasks: [],
-  inProgressTasks: [],
+  tasks: {
+    [taskStatus.DONE]: [],
+    [taskStatus.PROGRESS]: [],
+  },
   statusFilter: [taskStatus.PROGRESS, taskStatus.DONE],
   searchPerson: "",
 };
 
 const taskSlice = createSlice({
-  name: "tasks",
+  name: "taskManager",
   initialState,
   reducers: {
     setStatusFilter: (state, action) => {
@@ -59,11 +63,22 @@ const taskSlice = createSlice({
       const tasks = action.payload;
       const [parsedDoneTasks, parsedInProgressTasks] = parseTasks(tasks);
 
-      state.doneTasks = parsedDoneTasks;
-      state.inProgressTasks = parsedInProgressTasks;
+      state.tasks[taskStatus.DONE] = parsedDoneTasks;
+      state.tasks[taskStatus.PROGRESS] = parsedInProgressTasks;
+    },
+    addTask: (state, action) => {
+      const newTask = { ...action.payload.task };
+      const taskStatus: taskStatus = newTask.status;
+      const destinationStatus: taskStatus = action.payload.status;
+      const destinationElementIndex = action.payload.destinationElementIndex || state.tasks[destinationStatus].length - 1;
+      const index = state.tasks[destinationStatus].findIndex((task) => task.id === destinationElementIndex);
+
+      newTask.status = destinationStatus;
+      state.tasks[taskStatus] = state.tasks[taskStatus].filter((task) => task.id !== newTask.id);
+      state.tasks[destinationStatus].splice(index, 0, newTask);
     },
   },
 });
 
-export const { setStatusFilter, setSearchFilter, setTasks } = taskSlice.actions;
+export const { setStatusFilter, setSearchFilter, setTasks, addTask } = taskSlice.actions;
 export default taskSlice.reducer;

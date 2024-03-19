@@ -14,7 +14,7 @@ type CheckboxProps = {
 const Checkbox = ({ id, title, onCheckStatus, statusType }: CheckboxProps) => {
   const [isChecked, setIsChecked] = useState(false);
 
-  const status = useSelector((state: any) => state.task.statusFilter);
+  const status = useSelector((state: any) => state.taskManager.statusFilter);
 
   useEffect(() => {
     status.includes(statusType) ? setIsChecked(true) : setIsChecked(false);

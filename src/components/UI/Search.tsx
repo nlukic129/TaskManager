@@ -26,6 +26,7 @@ const Search = () => {
     searchBtn.current && searchBtn.current.classList.remove(classes.active);
     searchInput.current && searchInput.current.classList.remove(classes.active);
     cancelBtn.current && cancelBtn.current.classList.remove(classes.active);
+    dispatch(setSearchFilter(""));
   };
 
   const onTypingHandler = () => {
