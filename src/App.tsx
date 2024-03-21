@@ -7,22 +7,35 @@ import Login from "./components/login/Login";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Registration from "./components/registration/Registration";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser } from "./store/UserSlice";
+import MobileMenu from "./components/UI/MobileMenu";
 
 function App() {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [showLoginPage, setShowLoginPage] = useState(true);
+  const isUserLoggedIn = useSelector((state: any) => state.user.isUserLoggedIn);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const onLoginHandler = () => {
-    setIsUserLoggedIn(true);
+    dispatch(loginUser());
   };
 
   const onRegisterHandler = () => {
     setShowLoginPage(true);
   };
 
+  const openMenuHandler = () => {
+    setIsMenuOpen(true);
+  };
+  const closeMenuHandler = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
-      <Header />
+      <MobileMenu isOpen={isMenuOpen} onCloseMenu={closeMenuHandler} />
+      <Header onOpenMenu={openMenuHandler} />
       <AnimatePresence mode="wait">
         {!isUserLoggedIn ? (
           showLoginPage ? (
@@ -66,7 +79,7 @@ function App() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <Filters />
+            <Filters onOpenModal={closeMenuHandler} />
             <Tasks />
           </motion.div>
         )}

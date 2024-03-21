@@ -104,3 +104,21 @@
   max-width: 300px;
   font-size: 15px;
 }
+
+@media (max-width: 1180px) {
+  .responsiblePerson p {
+    max-width: 150px;
+  }
+
+  .description {
+    max-width: 150px;
+  }
+
+  .data h2 {
+    max-width: 150px;
+  }
+
+  .data h3 {
+    max-width: 150px;
+  }
+}

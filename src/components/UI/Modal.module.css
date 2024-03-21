@@ -40,6 +40,20 @@
   }
 }
 
+@media (max-width: 768px) {
+  .modal {
+    width: 35rem;
+    left: calc(50% - 18rem);
+  }
+}
+
+@media (max-width: 570px) {
+  .modal {
+    width: 23rem;
+    left: calc(50% - 13rem);
+  }
+}
+
 @keyframes slide-down {
   from {
     opacity: 0;

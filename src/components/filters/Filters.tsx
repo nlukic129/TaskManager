@@ -7,10 +7,15 @@ import { setStatusFilter } from "../../store/TaskSlice";
 import Button from "../UI/Button";
 import { ButtonType } from "../UI/Button";
 import Modal from "../UI/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NewTask from "../newTask/NewTask";
 
-const Filters = () => {
+interface FilterProps {
+  isMobile?: boolean;
+  onOpenModal: () => void;
+}
+
+const Filters = ({ isMobile, onOpenModal }: FilterProps) => {
   const dispatch = useDispatch();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -21,6 +26,10 @@ const Filters = () => {
   const onAddTaskHandler = () => {
     setIsOpenModal(false);
   };
+
+  useEffect(() => {
+    isOpenModal && onOpenModal();
+  }, [isOpenModal]);
 
   const ModalContent = (
     <Modal
@@ -34,8 +43,9 @@ const Filters = () => {
 
   return (
     <>
+      {isMobile}
       {isOpenModal && ModalContent}
-      <div className={classes.filters}>
+      <div className={isMobile ? classes.filters_mobile : classes.filters}>
         <Search />
         <hr />
         <div className={classes.checkboxes}>

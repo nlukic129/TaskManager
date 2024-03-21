@@ -16,3 +16,18 @@
 .header h1 {
   font-size: 38px;
 }
+.menu {
+  width: 70px;
+  height: 70px;
+  margin-top: 20px;
+  display: none;
+}
+
+@media (max-width: 750px) {
+  .time {
+    display: none;
+  }
+  .menu {
+    display: block;
+  }
+}

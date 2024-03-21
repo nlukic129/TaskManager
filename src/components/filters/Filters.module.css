@@ -7,6 +7,15 @@
   box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
 }
 
+.filters_mobile {
+  background-color: #6a6bce;
+  padding: 20px;
+  border-radius: 30px;
+  height: 80vh;
+  box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
+  padding-top: 50px;
+}
+
 .checkboxes h1 {
   font-family: PoppinsLight;
   color: #f7fff7;
@@ -22,4 +31,10 @@
 
 .new_task {
   margin-top: 50px;
+}
+
+@media (max-width: 750px) {
+  .filters {
+    display: none;
+  }
 }
