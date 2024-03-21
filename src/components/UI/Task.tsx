@@ -4,6 +4,7 @@ import { ITask, taskStatus } from "../../store/TaskSlice";
 import trash from "../../assets/images/trash.png";
 import { useDispatch } from "react-redux";
 import { deleteTask } from "../../store/TaskSlice";
+import { useEffect, useState } from "react";
 
 interface TaskProps {
   title: string;

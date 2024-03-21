@@ -1,15 +1,16 @@
-import { useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./InputText.module.css";
 
 interface InputTextProps {
   label: string;
   type: string;
   isError: boolean;
+  value?: string;
   onInput: (input: string) => void;
 }
 
-const InputText = ({ label, type, onInput, isError }: InputTextProps) => {
-  const input = useRef<HTMLInputElement>(null);
+const InputText = ({ label, type, onInput, isError, value }: InputTextProps) => {
+  const [input, setInput] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
@@ -17,15 +18,26 @@ const InputText = ({ label, type, onInput, isError }: InputTextProps) => {
   };
 
   const handleBlur = () => {
-    if (input.current!.value === "") {
+    if (input === "") {
       setIsFocused(false);
     }
-    onInput(input.current!.value);
+    onInput(input);
   };
+
+  const handleInput = (e: any) => {
+    setInput(e.target.value);
+  };
+
+  useEffect(() => {
+    if (value) {
+      setIsFocused(true);
+      setInput(value);
+    }
+  }, []);
 
   return (
     <p className={`${classes.input_container} ${isFocused ? classes.animation + " " + classes.animationColor : ""} ${isError ? classes.error : ""}`}>
-      <input type={type} id={label} className={classes.login_input} ref={input} onFocus={handleFocus} onBlur={handleBlur} />
+      <input type={type} id={label} className={classes.login_input} onFocus={handleFocus} onBlur={handleBlur} value={input} onChange={handleInput} />
       <label htmlFor={label}>{label}</label>
     </p>
   );

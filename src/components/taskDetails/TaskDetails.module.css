@@ -8,6 +8,7 @@
   padding-bottom: 20px;
   font-family: PoppinsLight;
   color: white;
+  position: relative;
 }
 
 .wrapper h1 {
@@ -16,6 +17,7 @@
 .title {
   font-size: 30px;
   font-weight: bold;
+  text-wrap: wrap;
 }
 
 .responsible_person {
@@ -27,4 +29,20 @@
   margin: 0;
   font-size: 20px;
   font-weight: bold;
+}
+
+.pen {
+  position: absolute;
+  right: 50px;
+  top: 0;
+  width: 20px;
+  padding: 5px;
+  border: 2px solid #4d4f9e;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.pen:hover {
+  background-color: #4d4f9e;
+  color: white;
 }

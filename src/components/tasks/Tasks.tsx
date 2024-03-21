@@ -1,6 +1,6 @@
 import classes from "./Tasks.module.css";
 import Task from "../UI/Task";
-import { ITask, changeTaskStatus, setTasks, taskStatus } from "../../store/TaskSlice";
+import { ITask, addTask, setTasks, taskStatus } from "../../store/TaskSlice";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -46,16 +46,16 @@ const Tasks = () => {
         ? inProgressTasksFiltered.find((task) => task.id.toString() === draggableId)
         : doneTasksFiltered.find((task) => task.id.toString() === draggableId);
 
-    dispatch(changeTaskStatus({ task, status: destination!.droppableId, destinationElementIndex: destination!.index }));
+    dispatch(addTask({ task, status: destination!.droppableId, destinationElementIndex: destination!.index }));
+  };
+
+  const closeModalHandler = () => {
+    setIsModalOpen(false);
   };
 
   const taskDetailsModal = (
-    <Modal
-      closeModal={() => {
-        setIsModalOpen(false);
-      }}
-    >
-      <TaskDetails {...taskDetails!} />
+    <Modal closeModal={closeModalHandler}>
+      <TaskDetails {...taskDetails!} onCloseModal={closeModalHandler} />
     </Modal>
   );
   return (

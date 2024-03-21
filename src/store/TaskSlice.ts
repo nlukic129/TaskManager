@@ -85,8 +85,17 @@ const taskSlice = createSlice({
       const { id, status }: { id: number; status: taskStatus } = action.payload;
       state.tasks[status] = state.tasks[status].filter((task) => task.id !== id);
     },
+    editTask: (state, action) => {
+      const { id, status, title, description, responsiblePerson }: ITask = action.payload;
+      const taskIndex = state.tasks[status].findIndex((task) => task.id === id);
+      if (taskIndex !== -1) {
+        state.tasks[status][taskIndex].title = title;
+        state.tasks[status][taskIndex].description = description;
+        state.tasks[status][taskIndex].responsiblePerson = responsiblePerson;
+      }
+    },
   },
 });
 
-export const { setStatusFilter, setSearchFilter, setTasks, changeTaskStatus, addTask, deleteTask } = taskSlice.actions;
+export const { setStatusFilter, setSearchFilter, setTasks, changeTaskStatus, addTask, deleteTask, editTask } = taskSlice.actions;
 export default taskSlice.reducer;
