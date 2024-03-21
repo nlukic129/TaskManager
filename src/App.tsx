@@ -9,15 +9,23 @@ import { useState } from "react";
 import Registration from "./components/registration/Registration";
 
 function App() {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
-  const [isLogin, setIsLogin] = useState(true);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [showLoginPage, setShowLoginPage] = useState(true);
+
+  const onLoginHandler = () => {
+    setIsUserLoggedIn(true);
+  };
+
+  const onRegisterHandler = () => {
+    setShowLoginPage(true);
+  };
 
   return (
     <>
       <Header />
       <AnimatePresence mode="wait">
         {!isUserLoggedIn ? (
-          isLogin ? (
+          showLoginPage ? (
             <motion.div
               key="login"
               initial={{ opacity: 0, x: -200 }}
@@ -27,8 +35,9 @@ function App() {
               style={{ marginTop: 20, display: "flex", justifyContent: "center" }}
             >
               <Login
+                onLogin={onLoginHandler}
                 onSwitchToSignUp={() => {
-                  setIsLogin(false);
+                  setShowLoginPage(false);
                 }}
               />
             </motion.div>
@@ -42,8 +51,9 @@ function App() {
               style={{ marginTop: 20, display: "flex", justifyContent: "center" }}
             >
               <Registration
+                onRegister={onRegisterHandler}
                 onSwitchToLogin={() => {
-                  setIsLogin(true);
+                  setShowLoginPage(true);
                 }}
               />
             </motion.div>

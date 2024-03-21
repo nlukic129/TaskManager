@@ -25,8 +25,8 @@ const InputText = ({ label, type, onInput, isError }: InputTextProps) => {
 
   return (
     <p className={`${classes.input_container} ${isFocused ? classes.animation + " " + classes.animationColor : ""} ${isError ? classes.error : ""}`}>
-      <input type={type} id="input-username" className={classes.login_input} ref={input} onFocus={handleFocus} onBlur={handleBlur} />
-      <label htmlFor="input-username">{label}</label>
+      <input type={type} id={label} className={classes.login_input} ref={input} onFocus={handleFocus} onBlur={handleBlur} />
+      <label htmlFor={label}>{label}</label>
     </p>
   );
 };

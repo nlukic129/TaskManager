@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button, { ButtonType } from "../UI/Button";
 import InputText from "../UI/InputText";
 import classes from "./Registration.module.css";
 
 interface RegistrationProps {
   onSwitchToLogin: () => void;
+  onRegister: () => void;
 }
 
-const Registration = ({ onSwitchToLogin }: RegistrationProps) => {
+const Registration = ({ onSwitchToLogin, onRegister }: RegistrationProps) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,6 +17,7 @@ const Registration = ({ onSwitchToLogin }: RegistrationProps) => {
   const [isEmailError, setIsEmailError] = useState(false);
   const [isPasswordError, setIsPasswordError] = useState(false);
   const [isConfirmPasswordError, setIsConfirmPasswordError] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const LoginHandler = () => {
     onSwitchToLogin();
@@ -28,7 +30,7 @@ const Registration = ({ onSwitchToLogin }: RegistrationProps) => {
 
   const onInputEmailHandler = (email: string) => {
     setEmail(email);
-    setIsEmailError(!email.includes("@") || !email.trim().length);
+    setIsEmailError(!email.trim().length);
   };
 
   const onInputPasswordHandler = (password: string) => {
@@ -41,8 +43,16 @@ const Registration = ({ onSwitchToLogin }: RegistrationProps) => {
     setIsConfirmPasswordError(confirmPassword !== password || !confirmPassword.trim().length);
   };
 
+  useEffect(() => {
+    if (!name.trim().length && !email.trim().length && !password.trim().length && (confirmPassword !== password || !confirmPassword.trim().length)) {
+      setIsButtonDisabled(true);
+    } else {
+      setIsButtonDisabled(false);
+    }
+  }, [name, email, password, confirmPassword]);
+
   const signUpUserHandler = () => {
-    console.log("Sign up user");
+    onRegister();
   };
 
   return (
@@ -52,7 +62,7 @@ const Registration = ({ onSwitchToLogin }: RegistrationProps) => {
       <InputText label="Email" type="text" onInput={onInputEmailHandler} isError={isEmailError} />
       <InputText label="Password" type="password" onInput={onInputPasswordHandler} isError={isPasswordError} />
       <InputText label="Confirm Password" type="password" onInput={onInputConfirmPasswordHandler} isError={isConfirmPasswordError} />
-      <Button label="Sign Up" buttonType={ButtonType.LIGHT_MODE} onClickButton={signUpUserHandler} />
+      <Button label="Sign Up" buttonType={ButtonType.LIGHT_MODE} onClickButton={signUpUserHandler} isDisabled={isButtonDisabled} />
       <div className={classes.login_wrapper}>
         <p className={classes.login_message}>Already have an account?</p>
         <p className={classes.login} onClick={LoginHandler}>
