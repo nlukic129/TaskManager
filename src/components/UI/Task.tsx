@@ -1,6 +1,9 @@
 import classes from "./Task.module.css";
 
 import { ITask, taskStatus } from "../../store/TaskSlice";
+import trash from "../../assets/images/trash.png";
+import { useDispatch } from "react-redux";
+import { deleteTask } from "../../store/TaskSlice";
 
 interface TaskProps {
   title: string;
@@ -17,10 +20,22 @@ const statusClasses = {
 };
 
 const Task = ({ title, description, responsiblePerson, status, onOpenDetails, id }: TaskProps) => {
+  const dispatch = useDispatch();
+
+  const onDeleteHandler = () => {
+    const result = window.confirm(`Are you sure you want to delete the task with title '${title}''`);
+
+    if (!result) {
+      return;
+    }
+    dispatch(deleteTask({ id, status }));
+  };
+
   return (
     <>
       <div className={classes.wrapper}>
         <div className={classes.main}>
+          <img src={trash} alt="trash" className={classes.trash} onClick={onDeleteHandler} />
           <div className={statusClasses[status]} />
           <div className={classes.data}>
             <div>
