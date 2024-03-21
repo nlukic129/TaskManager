@@ -18,13 +18,17 @@ const Filters = () => {
     dispatch(setStatusFilter(status));
   };
 
+  const onAddTaskHandler = () => {
+    setIsOpenModal(false);
+  };
+
   const ModalContent = (
     <Modal
       closeModal={() => {
         setIsOpenModal(false);
       }}
     >
-      <NewTask />
+      <NewTask onAddTask={onAddTaskHandler} />
     </Modal>
   );
 

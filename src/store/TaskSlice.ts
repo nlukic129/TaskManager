@@ -66,7 +66,7 @@ const taskSlice = createSlice({
       state.tasks[taskStatus.DONE] = parsedDoneTasks;
       state.tasks[taskStatus.PROGRESS] = parsedInProgressTasks;
     },
-    addTask: (state, action) => {
+    changeTaskStatus: (state, action) => {
       const newTask = { ...action.payload.task };
       const taskStatus: taskStatus = newTask.status;
       const destinationStatus: taskStatus = action.payload.status;
@@ -77,8 +77,12 @@ const taskSlice = createSlice({
       state.tasks[taskStatus] = state.tasks[taskStatus].filter((task) => task.id !== newTask.id);
       state.tasks[destinationStatus].splice(index, 0, newTask);
     },
+    addTask: (state, action) => {
+      const newTask = action.payload;
+      state.tasks[taskStatus.PROGRESS].unshift(newTask);
+    },
   },
 });
 
-export const { setStatusFilter, setSearchFilter, setTasks, addTask } = taskSlice.actions;
+export const { setStatusFilter, setSearchFilter, setTasks, changeTaskStatus, addTask } = taskSlice.actions;
 export default taskSlice.reducer;

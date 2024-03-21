@@ -2,6 +2,9 @@
   outline: none;
   border-color: black;
 }
+.error {
+  border: 2px solid red !important;
+}
 
 .text_area,
 .text_area::after {

@@ -4,6 +4,14 @@
   margin-bottom: 25px;
 }
 
+.error label {
+  color: #ff0000 !important;
+}
+
+.error input {
+  border-bottom: 1px solid #ff0000 !important;
+}
+
 .input_container label {
   color: #ffffff;
   position: absolute;

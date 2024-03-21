@@ -9,14 +9,16 @@ interface ButtonProps {
   label: string;
   buttonType: ButtonType;
   onClickButton: () => void;
+  isDisabled?: boolean;
 }
 
-const Button = ({ label, buttonType, onClickButton }: ButtonProps) => {
+const Button = ({ label, buttonType, onClickButton, isDisabled }: ButtonProps) => {
   return (
     <div className={classes.block_wrapper}>
       <div className={classes.gps_button_wrapper}>
         <button
-          className={buttonType === ButtonType.DARK_MODE ? classes.gps_button : classes.gps_button_light}
+          className={`${!isDisabled ? (buttonType === ButtonType.DARK_MODE ? classes.gps_button : classes.gps_button_light) : classes.disabled}`}
+          disabled={isDisabled}
           onClick={() => {
             onClickButton();
           }}
